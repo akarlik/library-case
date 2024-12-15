@@ -8,8 +8,8 @@
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
     "migrate": "node-pg-migrate",
-    "migrate:up": "node-pg-migrate up -j ts",
-    "migrate:down": "node-pg-migrate down -j ts",
+    "migrate:up": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

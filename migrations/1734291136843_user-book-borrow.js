@@ -22,7 +22,6 @@ exports.up = (pgm) => {
       },
       score: {
         type: 'integer', 
-        check: 'score >= 1 AND score <= 5', 
       },
     });
   
