@@ -7,6 +7,9 @@
     "start": "node dist/server.js",
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
+    "migrate": "node-pg-migrate",
+    "migrate:up": "node-pg-migrate up -j ts",
+    "migrate:down": "node-pg-migrate down -j ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -22,6 +25,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "node-pg-migrate": "^7.8.0",
     "pg": "^8.13.1"
   }
 }
