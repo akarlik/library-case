@@ -1,10 +1,11 @@
 import { Router, Request, Response } from "express";
-import { createBook, getAllBooks } from "../controllers/book.controller";
+import { createBook, getAllBooks, getBookInfo } from "../controllers/book.controller";
 import { bookValidationRules, validateBook } from "./validators/book.validator";
 
 const router = Router();
 
 router.get("/", getAllBooks);
+router.get("/:id", getBookInfo);
 router.post(
   "/",
   bookValidationRules(),
