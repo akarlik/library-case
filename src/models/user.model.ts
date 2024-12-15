@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/database";
+import { UserBookBorrow } from "./user-book-borrow.model";
 
 interface UserAttributes {
   id: number;
@@ -14,6 +15,7 @@ export class User
 {
   public id!: number;
   public name!: string;
+  public readonly UserBookBorrows?: UserBookBorrow[];
 }
 
 User.init(

@@ -19,7 +19,7 @@ exports.up = async (pgm) => {
     `);
   
     await pgm.db.query(`
-      INSERT INTO user_book_borrow (user_id, book_id, borrow_date, return_date, score)
+      INSERT INTO user_book_borrows (user_id, book_id, borrow_date, return_date, score)
       VALUES
       (2, 1, '2024-01-01', '2024-01-10', 5),
       (2, 2, '2024-02-01', '2024-01-10', 10),
@@ -29,7 +29,7 @@ exports.up = async (pgm) => {
   
   exports.down = async (pgm) => {
     await pgm.db.query(`
-      DELETE FROM user_book_borrow;
+      DELETE FROM user_book_borrows;
       DELETE FROM books;
       DELETE FROM users;
     `);

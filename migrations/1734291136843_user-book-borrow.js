@@ -1,5 +1,5 @@
 exports.up = (pgm) => {
-    pgm.createTable('user_book_borrow', {
+    pgm.createTable('user_book_borrows', {
       id: {
         type: 'serial', 
         primaryKey: true, 
@@ -25,7 +25,7 @@ exports.up = (pgm) => {
       },
     });
   
-    pgm.addConstraint('user_book_borrow', 'fk_user_id', {
+    pgm.addConstraint('user_book_borrows', 'fk_user_id', {
       foreignKeys: {
         columns: 'user_id',
         references: 'users(id)',
@@ -33,7 +33,7 @@ exports.up = (pgm) => {
       },
     });
   
-    pgm.addConstraint('user_book_borrow', 'fk_book_id', {
+    pgm.addConstraint('user_book_borrows', 'fk_book_id', {
       foreignKeys: {
         columns: 'book_id',
         references: 'books(id)',
@@ -43,6 +43,6 @@ exports.up = (pgm) => {
   };
   
   exports.down = (pgm) => {
-    pgm.dropTable('user_book_borrow'); 
+    pgm.dropTable('user_book_borrows'); 
   };
   

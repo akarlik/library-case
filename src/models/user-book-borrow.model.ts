@@ -5,10 +5,10 @@ import sequelize from "../config/database";
 
 interface UserBookBorrowAttributes {
   id: number;
-  userId: number;
-  bookId: number;
-  borrowDate: Date;
-  returnDate: Date | null;
+  user_id: number;
+  book_id: number;
+  borrow_date: Date;
+  return_date: Date | null;
   score: number;
 }
 
@@ -20,14 +20,14 @@ export class UserBookBorrow
   implements UserBookBorrowAttributes
 {
   public id!: number;
-  public userId!: number;
-  public bookId!: number;
-  public borrowDate!: Date;
-  public returnDate!: Date | null;
+  public user_id!: number;
+  public book_id!: number;
+  public borrow_date!: Date;
+  public return_date!: Date | null;
   public score!: number;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public readonly User?: User;
+  public readonly Book?: Book;
 }
 
 UserBookBorrow.init(
@@ -37,7 +37,7 @@ UserBookBorrow.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: User,
@@ -45,7 +45,7 @@ UserBookBorrow.init(
       },
       allowNull: false,
     },
-    bookId: {
+    book_id: {
       type: DataTypes.INTEGER,
       references: {
         model: Book,
@@ -53,11 +53,11 @@ UserBookBorrow.init(
       },
       allowNull: false,
     },
-    borrowDate: {
+    borrow_date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    returnDate: {
+    return_date: {
       type: DataTypes.DATE,
       allowNull: true,
     },
@@ -72,7 +72,7 @@ UserBookBorrow.init(
   }
 );
 
-UserBookBorrow.belongsTo(User, { foreignKey: "userId" });
-UserBookBorrow.belongsTo(Book, { foreignKey: "bookId" });
-User.hasMany(UserBookBorrow, { foreignKey: "userId" });
-Book.hasMany(UserBookBorrow, { foreignKey: "bookId" });
+UserBookBorrow.belongsTo(User, { foreignKey: "user_id", as: "User" });
+UserBookBorrow.belongsTo(Book, { foreignKey: "book_id", as: "Book" });
+User.hasMany(UserBookBorrow, { foreignKey: "user_id", as: "UserBookBorrows" });
+Book.hasMany(UserBookBorrow, { foreignKey: "book_id", as: "UserBookBorrows" });
