@@ -1,12 +1,19 @@
 import { Router, Request, Response } from "express";
-import { createUser, getAllUsers } from "../controllers/user.controller";
+import {
+  createUser,
+  getAllUsers,
+  getUserInfo,
+} from "../controllers/user.controller";
 import { userValidationRules, validateUser } from "./validators/user.validator";
 
 const router = Router();
 
-router.get("/users", getAllUsers);
+router.get("/", getAllUsers);
+
+router.get("/:id", getUserInfo);
+
 router.post(
-  "/users",
+  "/",
   userValidationRules(),
   validateUser,
   (req: Request, res: Response) => {

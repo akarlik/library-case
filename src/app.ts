@@ -7,7 +7,7 @@ const app: Application = express();
 
 app.use(json());
 
-app.use("/", userRoutes);
-app.use("/", bookRoutes);
+app.use("/users", userRoutes);
+app.use("/books", bookRoutes);
 
 export default app;

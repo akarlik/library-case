@@ -4,9 +4,9 @@ import { bookValidationRules, validateBook } from "./validators/book.validator";
 
 const router = Router();
 
-router.get("/books", getAllBooks);
+router.get("/", getAllBooks);
 router.post(
-  "/books",
+  "/",
   bookValidationRules(),
   validateBook,
   (req: Request, res: Response) => {
