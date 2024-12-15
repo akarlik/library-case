@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: library-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+      - /usr/src/app/dist
